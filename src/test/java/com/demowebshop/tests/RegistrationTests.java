@@ -1,13 +1,22 @@
 package com.demowebshop.tests;
 
-import org.openqa.selenium.By;
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class RegistrationTests extends TestBase{
 
-  @Test
-  public void LoginPositiveTest() {
-    app.getUser().click(By.xpath("//a[contains(text(),'Register')])"));
+  @BeforeMethod
+  public void goToRegistrationPage() {
+    app.getUser().clickOnRegisterButton();
   }
 
+  @Test
+  public void registrationPositiveTest() {
+    app.getUser().fillPersonalDetails();
+    app.getUser().fillPasswordsFilds();
+    app.getUser().clickOnOkRegisterButton();
+
+    Assert.assertTrue(app.getUser().isSignCompletedPresent());
+  }
 }

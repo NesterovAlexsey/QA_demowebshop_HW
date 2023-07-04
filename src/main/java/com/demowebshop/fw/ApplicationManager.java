@@ -8,9 +8,9 @@ public class ApplicationManager {
 
   public WebDriver driver;
 
-  UserRegAndLogin user;
+  UserRegHelper user;
 
-  public UserRegAndLogin getUser() {
+  public UserRegHelper getUser() {
     return user;
   }
 
@@ -20,7 +20,7 @@ public class ApplicationManager {
     driver.manage().window().maximize();
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-    user = new UserRegAndLogin(driver);
+    user = new UserRegHelper(driver);
   }
 
   public void stop() {
